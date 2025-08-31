@@ -1,5 +1,8 @@
 # IoT Environmental Weather Station
 This project is a complete, battery-powered IoT weather station that measures various environmental parameters and displays them on a real-time, web-based dashboard. It uses a Seeed Studio XIAO ESP32S3 microcontroller to read sensor data and publishes it via MQTT to a cloud broker. The data is then visualized using a Node-RED dashboard, accessible from any device on the local network like a PC, iPad, or tablet.
+
+A walkthrough of my project development is in the [Dev Blog](Dev_Blog.md)
+
 ## Features
 
 Real-time Monitoring: Measures Temperature, Humidity, Barometric Pressure, UV Intensity, and Ambient Light.

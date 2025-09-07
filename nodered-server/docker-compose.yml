@@ -1,0 +1,12 @@
+services:
+  node-red:
+    image: nodered/node-red:latest
+    container_name: my-weather-station-nodered
+    ports:
+      - "1880:1880"
+    volumes:
+      - nodered_data:/data
+    restart: unless-stopped
+
+volumes:
+  nodered_data:

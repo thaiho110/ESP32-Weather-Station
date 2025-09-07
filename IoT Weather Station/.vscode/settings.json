@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "hivemq",
+        "ipch",
+        "weatherstation"
+    ],
+    "files.exclude": {
+        "**/*.rpyc": true,
+        "**/*.rpa": true,
+        "**/*.rpymc": true,
+        "**/cache/": true
+    }
+}

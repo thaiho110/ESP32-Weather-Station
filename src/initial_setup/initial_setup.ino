@@ -34,9 +34,11 @@ void setup()
 
   wm.setConfigPortalTimeout(60);
 
-  if (!wm.autoConnect("WeatherStation-Setup"), WIFI_PASS) {
-    Serial.println("Failed to connect to WiFi and hit timeout. Going to sleep.");
-    ESP.deepSleep(SLEEP_INTERVAL_SECONDS * 1000000);
+  if (!wm.autoConnect("WeatherStation-Setup", WIFI_PASS)) {
+    Serial.println("Failed to connect to WiFi and hit timeout.");
+    Serial.println("Rebooting to restart the portal...");
+    delay(3000);
+    ESP.restart();
   }
 
   Serial.println("\nWiFi connected successfully!");
@@ -82,6 +84,7 @@ void setup()
   }
 
   Serial.printf("All tasks complete. Going to sleep for %d seconds.\n\n", SLEEP_INTERVAL_SECONDS);
+  delay(3000);
   ESP.deepSleep(SLEEP_INTERVAL_SECONDS * 1000000);
 }
 

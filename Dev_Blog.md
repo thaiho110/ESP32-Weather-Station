@@ -108,10 +108,10 @@ Dashboard Not Updating: After getting connected, I added some gauge and text nod
 After fixing the value paths and adjusting the dashboard layout grid to fit my screen without scrolling, I finally had a working dashboard
 
 ![Pciture of Node-Red Dashboard on PC](project-images/node-red-dashboard.png)
-![Picture of Node-Red Dashboard on Phone]()
-![Picture of Node-Red Dashboard on Phone]()
-![Picture of Node-Red Dashboard on Phone]()
-![Picture of Node-Red Dashboard on Phone]()
+![Picture of Node-Red Dashboard on Phone](project-images/node-red-dashboard-phone-1.jpg)
+![Picture of Node-Red Dashboard on Phone](project-images/node-red-dashboard-phone-2.jpg)
+![Picture of Node-Red Dashboard on Phone](project-images/node-red-dashboard-phone-3.jpg)
+![Picture of Node-Red Dashboard on Phone](project-images/node-red-dashboard-phone-4.jpg)
 
 ## Day #4: Major Code Refinements - Dynamic Wi-Fi, I2C, and Security
 
@@ -130,10 +130,13 @@ Moving the two data wires to the XIAO's I2C pins (D4 and D5).
 Updating the code to use the Wire.h library and initialize the sensor with its I2C address (0x22).
 The circuit is now simpler, and it frees up the hardware serial port for other potential uses.
 
+I forgot to capture picture on this day, maybe I will try to get some images up here later!
+
 ## Day #5: The Key to Battery Life - Deep Sleep
 
 This was the final and most important software update. To make the 8000mAh battery last for months, I refactored the code to use the ESP32's Deep Sleep mode.
 
+![A picture after implementing deep sleep](project-images/arduino-ide-serial-monitor-after.png)
+
 The entire operational logic now runs once inside the setup() function. The device wakes up, connects to Wi-Fi, reads all the sensors, publishes the data to MQTT, and then immediately goes back to deep sleep for a 5-minute interval. The loop() function is now completely empty, as it's never reached. This simple change reduces the average power consumption by over 99% and is the key to long-term, autonomous operation.
 
-![A picture of Aruduino IDE serial monitor with project + deep sleep]()

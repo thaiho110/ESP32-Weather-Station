@@ -75,6 +75,8 @@ That is the main part along with other tools I already have at home or either ca
 
 ## Day #2: Start coding
 
+![A picture of the testing setup](project-images/testing-setup.jpg)
+
 So second day, I start with coding all of the code for implementing of the sensors on the board, the code can be found in the [src](src) folder of the project. For the first day, I test with initialized the boards, having it to read all information provided by the SEN0501 sensor, as well as public the data to an MQTT broker - [HiveMQ](https://www.hivemq.com/) - as JSON message, this can be later be use to display the information on other PCs, phones and devices.
 
 Basically for the SEN0501 sensor, I set it up to use UART as its communication protocol for now, but in later iterations I will change it to I2C for a much more simple and faster circuit. Additional information that I read during the development of the intial setup can be found here:
@@ -87,9 +89,9 @@ Basically for the SEN0501 sensor, I set it up to use UART as its communication p
 
 The code can be run and able to publish the info to HiveMQ broker that I have set up
 
-![Picture of data on HiveMQ Cloud]()
+![Picture of data on HiveMQ Cloud](project-images/hive-mq-data.png)
 
-![Picture of command line in Arduino IDE]()
+![Picture of command line in Arduino IDE](project-images/arduino-ide-serial-monitor-before.png)
 
 ## Day #3: Bringing the Data to Life with Node-RED
 
@@ -105,7 +107,7 @@ Dashboard Not Updating: After getting connected, I added some gauge and text nod
 
 After fixing the value paths and adjusting the dashboard layout grid to fit my screen without scrolling, I finally had a working dashboard
 
-![Pciture of Node-Red Dashboard on PC]()
+![Pciture of Node-Red Dashboard on PC](project-images/node-red-dashboard.png)
 ![Picture of Node-Red Dashboard on Phone]()
 ![Picture of Node-Red Dashboard on Phone]()
 ![Picture of Node-Red Dashboard on Phone]()

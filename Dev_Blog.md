@@ -91,4 +91,47 @@ The code can be run and able to publish the info to HiveMQ broker that I have se
 
 ![Picture of command line in Arduino IDE]()
 
+## Day #3: Bringing the Data to Life with Node-RED
 
+With data successfully streaming to the cloud, the next logical step was to create a user interface to see it in real-time. Just looking at JSON messages isn't very exciting! I decided to use Node-RED for this, as it's a powerful visual tool for creating data flows and, more importantly, has an excellent dashboard UI.
+
+I set up Node-RED locally on my PC using Docker, which creates a clean, portable environment for the server. The initial flow was simple: an mqtt in node to subscribe to my HiveMQ topic, a json node to convert the text message into a usable object, and a debug node to see the data.
+
+This is where I hit my first real troubleshooting challenges:
+
+MQTT Connection: The mqtt in node was stuck on "connecting...". I realized that for a secure connection to HiveMQ Cloud, I had to use port 8883 and explicitly enable the "Use TLS" option in the broker configuration.
+
+Dashboard Not Updating: After getting connected, I added some gauge and text nodes, but they weren't showing any data. The debug panel showed the data arriving perfectly, but the UI was blank. After some research, I learned that the standard node-red-dashboard is being deprecated. I upgraded to the newer, official FlowFuse Dashboard 2.0, which required a different configuration. The key was to use a direct path to the data (e.g., payload.temperature) in the "Value" field, instead of the older {{payload.temperature}} syntax.
+
+After fixing the value paths and adjusting the dashboard layout grid to fit my screen without scrolling, I finally had a working dashboard
+
+![Pciture of Node-Red Dashboard on PC]()
+![Picture of Node-Red Dashboard on Phone]()
+![Picture of Node-Red Dashboard on Phone]()
+![Picture of Node-Red Dashboard on Phone]()
+![Picture of Node-Red Dashboard on Phone]()
+
+## Day #4: Major Code Refinements - Dynamic Wi-Fi, I2C, and Security
+
+While the project was working, the firmware was still very rigid. Having my Wi-Fi and MQTT credentials hardcoded was not practical or secure for a real device that I plan to share on GitHub. This day was dedicated to a major code cleanup.
+1. Dynamic Wi-Fi Configuration with WiFiManager:
+
+I integrated the brilliant WiFiManager library. Now, if the device can't connect to a known network, it automatically creates its own secure Access Point named "WeatherStation-Setup". I can connect to this with my phone, and a web page pops up allowing me to scan for networks and enter the password. This makes the device completely "headless" and easy to deploy anywhere.
+
+2. Securing Credentials:
+Uploading code with plain-text passwords to a public GitHub repository is a major security risk. To solve this, I implemented the standard "secrets header" method for the Arduino IDE. All sensitive information (the password for the setup portal and my MQTT broker credentials) is now stored in a separate secrets.h file. This file is then added to .gitignore, ensuring it's never uploaded to GitHub. The main sketch includes this local file and uses macros to access the credentials, keeping my code secure and shareable.
+
+3. Switching to I2C:
+As planned, I switched the SEN0501 environmental sensor from UART to I2C. This was a simple process:
+Flipping the physical switch on the sensor board.
+Moving the two data wires to the XIAO's I2C pins (D4 and D5).
+Updating the code to use the Wire.h library and initialize the sensor with its I2C address (0x22).
+The circuit is now simpler, and it frees up the hardware serial port for other potential uses.
+
+## Day #5: The Key to Battery Life - Deep Sleep
+
+This was the final and most important software update. To make the 8000mAh battery last for months, I refactored the code to use the ESP32's Deep Sleep mode.
+
+The entire operational logic now runs once inside the setup() function. The device wakes up, connects to Wi-Fi, reads all the sensors, publishes the data to MQTT, and then immediately goes back to deep sleep for a 5-minute interval. The loop() function is now completely empty, as it's never reached. This simple change reduces the average power consumption by over 99% and is the key to long-term, autonomous operation.
+
+![A picture of Aruduino IDE serial monitor with project + deep sleep]()

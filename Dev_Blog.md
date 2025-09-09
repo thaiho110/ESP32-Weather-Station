@@ -1,6 +1,6 @@
 # Project Development Blog
 
-## Day #1: Initial Setup, Brainstorming idea and preparation
+## Update #1: Initial Setup, Brainstorming idea and preparation - Welcome to the journey!
 I have an idea for setting up my own weather station for a pretty long time ago, but as a uni student, I probally have left it untouched for a little to long. 
 So recently, since the weather where I live (HCM, Vietnam) has become a little too much unpredictable even for me, and the weather news accuracy is somewhat questionable in Vietnam (of course comparing to other developed countries,...). I thought, just for fun, why should I not start my own
 weather station?
@@ -73,7 +73,7 @@ Along with it, Im using an [Optical Dust Sensor PM2.5 GP2Y1010AU0F](https://hsho
 
 That is the main part along with other tools I already have at home or either can be bought from any electronic store like solder, breadboards, wires and some 3D printed parts for the casing as well, you can look through this 3D print services if you don't have a 3D printer - [3DMeo](https://www.3dmeo.vn/) - they are from the same corporation with the store where I bought the board and sensors, I have use them for some projects at school before and their quality is good enough, for me Im recently start my hobby into 3D printing so I will going to try it myself.
 
-## Day #2: Start coding
+## Update #2: Start coding
 
 ![A picture of the testing setup](project-images/testing-setup.jpg)
 
@@ -93,7 +93,7 @@ The code can be run and able to publish the info to HiveMQ broker that I have se
 
 ![Picture of command line in Arduino IDE](project-images/arduino-ide-serial-monitor-before.png)
 
-## Day #3: Bringing the Data to Life with Node-RED
+## Update #3: Bringing the Data to Life with Node-RED
 
 With data successfully streaming to the cloud, the next logical step was to create a user interface to see it in real-time. Just looking at JSON messages isn't very exciting! I decided to use Node-RED for this, as it's a powerful visual tool for creating data flows and, more importantly, has an excellent dashboard UI.
 
@@ -132,7 +132,7 @@ The circuit is now simpler, and it frees up the hardware serial port for other p
 
 I forgot to capture picture on this day, maybe I will try to get some images up here later!
 
-## Day #5: The Key to Battery Life - Deep Sleep
+## Update #5: The Key to Battery Life - Deep Sleep
 
 This was the final and most important software update. To make the 8000mAh battery last for months, I refactored the code to use the ESP32's Deep Sleep mode.
 
@@ -153,4 +153,11 @@ After integrating the ESP-Google-Sheet-Client library, I ran into a persistent a
 
 Seeing the first row of data appear automatically in my spreadsheet, sent directly from the ESP32, was a huge moment of success.
 
-![A picture of the data logging on Google Sheet]()
+![A picture of the data logging on Google Sheet](project-images/data-logging.png)
+
+## Update #7: Update on the hardware setup
+
+I just want to update on the hardware set up part of the project, I currently working on creating some parts that I can use. I create most of them on my own using [Shapr3D (Free version)](https://www.shapr3d.com/), although somewhat limited, the software is pretty much easy to use compare to what I used to use earlier, Fusion 360 and Solidworks - of course these two can perform far more superior for more complex tasks, I will try to update the full working models along with some picture when I have fully done with it!
+
+
+# Disclaimer: This project is conduct mainly in my free time so I have update the Day -> Update, each update might took 1-2 days

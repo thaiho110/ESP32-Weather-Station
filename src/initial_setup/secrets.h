@@ -1,4 +1,8 @@
-#define WIFI_PASS "Qtga2016"
-#define MQTT_SERVER "e627441eb01e4ff38434bd03c031676d.s1.eu.hivemq.cloud"
-#define MQTT_USER "WeatherStation"
-#define MQTT_PASS "Qtga2016"
+#define WIFI_PASS ""
+#define MQTT_SERVER ""
+#define MQTT_USER ""
+#define MQTT_PASS ""
+const char SPREADSHEET_ID[] = "";
+const char PRIVATE_KEY[] PROGMEM = ""; 
+#define PROJECT_ID ""
+#define CLIENT_EMAIL ""

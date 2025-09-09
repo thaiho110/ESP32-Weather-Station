@@ -140,3 +140,17 @@ This was the final and most important software update. To make the 8000mAh batte
 
 The entire operational logic now runs once inside the setup() function. The device wakes up, connects to Wi-Fi, reads all the sensors, publishes the data to MQTT, and then immediately goes back to deep sleep for a 5-minute interval. The loop() function is now completely empty, as it's never reached. This simple change reduces the average power consumption by over 99% and is the key to long-term, autonomous operation.
 
+## Day #6: Creating a Permanent Record - Logging to Google Sheets
+
+The real-time dashboard is great, but I wanted a permanent, historical log of the data for my future machine learning goal. I decided to make the ESP32 send data directly to a Google Sheet.
+This was the most challenging part of the project so far. I followed an excellent guide from Random Nerd Tutorials: [ESP32 Publish Sensor Readings to Google Sheets (ESP8266 Compatible)](https://randomnerdtutorials.com/esp32-esp8266-publish-sensor-readings-to-google-sheets/) that uses a Google Service Account for secure authentication. The setup process was complex, involving the Google Cloud Console, creating a service account, enabling APIs, and downloading a JSON private key.
+
+After integrating the ESP-Google-Sheet-Client library, I ran into a persistent authentication error: "Google Sheets not ready." This kicked off a deep and educational debugging session:
+
+1. The Time Sync Problem: My first realization was that Google's authentication is highly time-sensitive. A device waking from sleep has no concept of time, so I had to add logic to connect to an NTP (Network Time Protocol) server to get the current time.
+2. The Unreliable Network: Even with the NTP code, the device would often get stuck "Waiting for time sync...". I discovered that relying on a single time server was a weak point. I fixed this by providing two NTP servers in the configuration (pool.ntp.org and a local Vietnamese server, 1.ntp.vnix.vn), which made the time sync much more reliable.
+3. The Failed to Get Time: So after fixing all of the above problems, it continue to stuck on "Failed to get time", this then led me into dig dive conversations, community and documentations from different libraries, hardware manufacturers. At last I found this post on [StackOverflow](https://stackoverflow.com/questions/75848891/esp32-unable-to-get-time-form-the-ntp-server) which allows the code to functioning, although the author did not state how it work, I will continue to try and figure out how the code can work
+
+Seeing the first row of data appear automatically in my spreadsheet, sent directly from the ESP32, was a huge moment of success.
+
+![A picture of the data logging on Google Sheet]()

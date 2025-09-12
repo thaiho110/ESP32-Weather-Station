@@ -159,5 +159,18 @@ Seeing the first row of data appear automatically in my spreadsheet, sent direct
 
 I just want to update on the hardware set up part of the project, I currently working on creating some parts that I can use. I create most of them on my own using [Shapr3D (Free version)](https://www.shapr3d.com/), although somewhat limited, the software is pretty much easy to use compare to what I used to use earlier, Fusion 360 and Solidworks - of course these two can perform far more superior for more complex tasks, I will try to update the full working models along with some picture when I have fully done with it!
 
+## Update #8: Hardware setup
 
-# Disclaimer: This project is conduct mainly in my free time so I have update the Day -> Update, each update might took 1-2 days
+So for a weather station, I will need to part: a control box and a stenvenson screen. The control box would hold the board, battery and solar power manager board, so this I am working on a working model right now, I wil definitely update it later. A stevenson screen is a shelter for the sensor, ensuring the sensor safety from rain and weather while still able to functioning properly - information that I found on [Stevenson Screen](https://www.cordulus.com/glossary/stevenson-screen).
+
+So for the stevenson screen, I am not really that good in designing 3D model yet so a resolve is I used a pre made model, I stumble across a very atractive model use in [@J-Rat's video](https://www.youtube.com/watch?v=uq0Maka7gSo&t=7s) which is upload by a user name Galto2000: [Stevenson screen for wireless meteorological sensor](https://www.thingiverse.com/thing:83969).
+
+However, as I use a SEN0501 sensor, which also included a UV and ambient light sensor, this design will not able to fits completely with my use case, so I made a small sacrificial, use a clear plastic cover at the top, slightly larger than the sensor, as I trust the wind and moving air will prevent the sensor from overheating and return wrong readings. 
+![A picture of the modified Stevenson screen]()
+
+And finally I will update the image of the running set up later - as I still need to go buy some tools and wood stick for seting the control box and stevenson screen up. 
+
+### Disclaimer: This project is conduct mainly in my free time so I have update the Day -> Update, each update might took 1-2 days or longer based on my school work and personal schedules.
+
+### A large update is that I am also continue this journey with one more idea: How about I use the gather data to automatically watering the plants I have? 
+### The link to the new project will be place here when I start with it: [Automate Plant Watering System based on DIY weather station]()
